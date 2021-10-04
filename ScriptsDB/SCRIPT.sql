@@ -95,15 +95,7 @@ where t.nombre_empleado <> '-' and t.nombre_empleado <> '-' and t.correo_emplead
 and t.usuario_empleado <> '-'  and t."contraseÑa_empleado" <> '-' and t.encargado_tienda <> '-' and t.encargado_tienda <> t.nombre_empleado and 
 t.tienda_empleado <> '-';
 
---############################------Query para ingresar codigo postal tambien---------------------------- ahora mismo no funciona porque siempre tiene '-' en el campo de codigo postal
-insert into empleado (nombre,apellido,email,direccion, distrito,activo,username, codigo_postal,contrasenia,jefe,id_tienda)
-select distinct 
-split_part (t.nombre_empleado , ' ', 1), split_part (t.nombre_empleado , ' ', 2), t.correo_empleado , split_part (t.direccion_empleado, ' ', 1), split_part (t.direccion_empleado, ' ', 2),
-t.empleado_activo , t.usuario_empleado , cast(t.codigo_postal_empleado as integer), t."contraseÑa_empleado" , 'Si'  as jefe , (select tie.id from tienda tie where t.tienda_empleado = tie.nombre)
-from temporal t 
-where t.nombre_empleado <> '-' and t.nombre_empleado <> '-' and t.correo_empleado <> '-' and t.direccion_empleado <> '-' and t.empleado_activo <> '-'
-and t.usuario_empleado <> '-' and t.codigo_postal_empleado <> '-' and t."contraseÑa_empleado" <> '-' and t.encargado_tienda <> '-' and t.encargado_tienda = t.nombre_empleado 
-and t.tienda_empleado <> '-';
+
 
 ------------------------------------------------------------------------------------Categoria detalle
 insert into categoria_detalle (id_pelicula,id_categoria)
@@ -147,5 +139,24 @@ to_date( t.fecha_renta , 'DD/MM/YYYY')
 from temporal t
 where t.monto_a_pagar <> '-' and t.fecha_pago <> '-' and t.fecha_retorno <> '-' and t.nombre_empleado <> '-' and t.nombre_cliente <> '-' 
 and t.nombre_pelicula <> '-' and t.tienda_pelicula <> '-' and fecha_renta <> '-'
+
+
+
+
+
+----------------------------------------------------------------------Eliminar tablas 
+
+
+
+drop table actor, actor_detalle , categoria , categoria_detalle , ciudad , clasificacion , cliente , empleado , idioma , 
+        idioma_detalle , inventario, pais , pelicula , rentado  , tienda  ;
+
+
+
+
+
+
+
+
 
 

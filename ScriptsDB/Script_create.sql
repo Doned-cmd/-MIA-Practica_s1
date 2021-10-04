@@ -89,7 +89,10 @@ CREATE TABLE Temporal
 	from '/home/doned/Documentos/Archivos/Practica/Practica/nuevaEnt.csv' (FORMAT csv, HEADER, DELIMITER ';');
 
    
-    select  * from temporal;
+
+
+        delete from temporal;
+        
 
 CREATE TABLE Actor 
     (
